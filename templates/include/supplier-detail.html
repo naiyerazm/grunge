@@ -1,0 +1,20 @@
+<div class="row">
+<div class="col-sm-6">
+<strong>{{supplier.company_name}}</strong><br />
+{{supplier.address_1}}<br />
+{% if supplier.address_2 %}
+    {{supplier.address_2}}<br />
+{% endif %}
+License No: {{supplier.trade_lic_no}}<br />
+Account No: {{supplier.account_no}}<br />
+</div>
+<div class="col-sm-6">
+    <strong>Contact Details</strong><br />
+    Tele: {{supplier.phone}}<br />
+    Fax: {{supplier.fax}}<br />
+    P.O. Box: {{supplier.po_box}}<br />
+    {{supplier.state}},{{supplier.country}}<br />
+    Email: {{supplier.email}}<br />
+    web: {{supplier.web}}<br />
+</div>
+</div>

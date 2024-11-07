@@ -1,0 +1,100 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+{% load static %}
+{% include 'common/head.html' %}
+
+<body>
+  <div class="container-scroller">
+    <!-- partial:../../partials/_navbar.html -->
+    {% include 'common/header.html' %}
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+      <!-- partial:../../partials/_settings-panel.html -->
+     
+      <!-- partial -->
+      {% include 'common/sidebar.html' %}
+      <!-- partial -->
+      <div class="main-panel">
+        <div class="content-wrapper">
+          <div class="row">
+            <div class="col-md-12 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body search-panel">
+                  <h3 id="form-title">Create Artist</h3>
+                  <span class="error" id="error"></span>
+                  <form class="forms-sample" name="frmArtist" id="frmArtist" method="post">
+                        <div class="form-group row">
+                          <div class="col-sm-12">
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Artist Name">
+                          </div>
+                          </div>  
+                        <div class="form-group row">
+                        <div class="col-sm-12" style="text-align: center;">
+                          <input type="submit" name="btnSaveArtist" id="btn-save-artist" class="btn btn-primary me-2" value="Save">
+                          <a href="/user/artist/list">Cancel</a>
+                      </div>
+                    </div>
+                    <input type="hidden" id="uuid" name="uuid">
+                  </form>
+                </div>
+              </div>
+            </div>            
+            <div class="col-lg-12 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Artist Detail</h4>
+                  
+                  <div class="table-responsive">
+                    
+                    <table class="table table-hover">
+                      <thead>
+                        <tr>
+                          <th>Name</th>
+                          <th>UUID</th>
+                          <th>Album Url</th>
+                          <th>Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for c in results %}
+                        <tr>
+                          <td><strong>{{ c.name }}</strong></td>
+                          <td>{{ c.uuid }}</td>
+                          <td>{{ c.albums_url }}</td>
+                          <td>
+                            <a href="javascript:void(0)" onclick="get_artist_info('{{c.uuid}}')">Edit</a>
+                            |
+                            <a href="javascript:void(0)" onclick="delete_module('{{c.uuid}}','artist')">Delete</a>
+                          </td>
+                        </tr>
+                        {% endfor %}
+                        <tr>
+                          <td colspan="4" style="text-align: center;"><div class="pagination">
+                            <a href="/user/artist/list/?page={{prev_page}}">&laquo; Previous</a>
+                            <a href="/user/artist/list/?page={{next_page}}"">Next&raquo;</a>
+                          </div></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+        <!-- content-wrapper ends -->
+        {% include 'common/footer.html' %}
+      </div>
+      <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+  </div>
+  <!-- container-scroller -->
+ {% include 'common/js.html' %}
+</body>
+
+</html>

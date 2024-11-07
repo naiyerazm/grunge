@@ -1,0 +1,20 @@
+<div class="row">
+<div class="col-sm-6">
+<strong>{{client.company_name}}</strong><br />
+{{client.address_1}}<br />
+{% if client.address_2 %}
+    {{client.address_2}}<br />
+{% endif %}
+License No: {{client.trade_lic_no}}<br />
+Account No: {{client.account_no}}<br />
+</div>
+<div class="col-sm-6">
+    <strong>Contact Details</strong><br />
+    Tele: {{client.phone}}<br />
+    Fax: {{client.fax}}<br />
+    P.O. Box: {{client.po_box}}<br />
+    {{client.state}},{{client.country}}<br />
+    Email: {{client.email}}<br />
+    web: {{client.web}}<br />
+</div>
+</div>

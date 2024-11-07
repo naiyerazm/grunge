@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+{% load static %}
+{% include 'common/head.html' %}
+<style>
+  .error-name{
+    color: red;
+    font-size: 10px;
+  }
+</style>
+
+<body>
+  <div class="container-scroller">
+    <!-- partial:../../partials/_navbar.html -->
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+      <div class="main-panel">
+        <div class="content-wrapper">
+          <h2 style="padding-left: 10px; padding-bottom: 5px;">Login</h2>
+          <form class="forms-sample" id="frm-login" name="frmLogin">
+          <div class="row">
+            <div class="col-md-12 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+              
+                      <div class="form-group row">
+                        <label for="labelEmail" class="col-sm-3 col-form-label">User Name</label>
+                        <div class="col-sm-9">
+                          <span class="error-name" id="error-username"></span>
+                          <input type="text" class="form-control" id="username" name="username" placeholder="User Name">
+                        </div>
+                      </div>
+                      
+                      <div class="form-group row">
+                        <label for="examplePasswor" class="col-sm-3 col-form-label">Password</label>
+                        <div class="col-sm-9">
+                          <span class="error-name" id="error-password"></span>
+                          <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                        </div>
+                      </div>
+
+                      <div class="form-group row">
+                        <div class="col-sm-12">
+                        <button type="submit" class="btn btn-primary me-2" name="btnLogin" id="btn-login">Login</button>
+                        </div>
+                        </div>
+                      
+                  </div>
+                </div>
+              </div>
+          
+          </div>
+          </form>
+        </div>
+        <!-- content-wrapper ends -->
+        {% include 'common/footer.html' %}
+      </div>
+      <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+  </div>
+  <!-- container-scroller -->
+ {% include 'common/js.html' %}
+</body>
+
+</html>

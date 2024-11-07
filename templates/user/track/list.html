@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+{% load static %}
+{% include 'common/head.html' %}
+
+<body>
+  <div class="container-scroller">
+    <!-- partial:../../partials/_navbar.html -->
+    {% include 'common/header.html' %}
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+      <!-- partial:../../partials/_settings-panel.html -->
+     
+      <!-- partial -->
+      {% include 'common/sidebar.html' %}
+      <!-- partial -->
+      <div class="main-panel">
+        <div class="content-wrapper">
+          <div class="row">
+            <div class="col-md-12 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body search-panel">
+                  <h3 id="form-title">Create Track</h3>
+                  <span class="error" id="error"></span>
+                  <form class="forms-sample" name="frmTrack" id="frmTrack" method="post">
+                        <div class="form-group row">
+                          <div class="col-sm-12">
+                            <span class="error" id="name-error"></span>
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Album Name" {% if artist_info %} value="{{artist_info.name}}" {% endif %}>
+                          </div>
+                          </div>
+                          <div class="form-group row">
+                            <div class="col-sm-12">
+                              <span class="error" id="number-error"></span>
+                              <input type="number" class="form-control" id="number" name="number" placeholder="Number">
+                            </div>
+                            </div>
+                            <div class="form-group row">
+                              <div class="col-sm-12">
+                                <span class="error" id="album-error"></span>
+                                <select name="album" id="album" class="form-control">
+                                  <option value="">Select Album</option>
+                                  {% for a in album_list %}
+                                  <option value="{{a.uuid}}">{{a.name}}</option>
+                                  {% endfor %}
+                                </select>
+                              </div>
+                              </div>  
+                              
+                        <div class="form-group row">
+                        <div class="col-sm-12" style="text-align: center;">
+                          <input type="submit" name="btnSaveTrack" id="btn-save-track" class="btn btn-primary me-2" value="Save">
+                          <a href="/user/track/list">Cancel</a>
+                      </div>
+                    </div>
+                    <input type="hidden" id="uuid" name="uuid">
+                  </form>
+                </div>
+              </div>
+            </div>            
+            <div class="col-lg-12 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Track Detail</h4>
+                  
+                  <div class="table-responsive">
+                    
+                    <table class="table table-hover">
+                      <thead>
+                        <tr>
+                          <th>Name</th>
+                          <th>Number</th>
+                          <th>Album</th>
+                          <th>Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for c in results %}
+                        <tr>
+                          <td><strong>{{ c.name }}</strong></td>
+                          <td>{{ c.number }}</td>
+                          <td>{{ c.album.name }}</td>
+                          <td>
+                            <a href="javascript:void(0)" onclick="get_track_info('{{c.uuid}}')">Edit</a>
+                            |
+                            <a href="javascript:void(0)" onclick="delete_module('{{c.uuid}}','track')">Delete</a>
+                          </td>
+                        </tr>
+                        {% endfor %}
+                        <tr>
+                          <td colspan="4" style="text-align: center;"><div class="pagination">
+                            <a href="/user/track/list/?page={{prev_page}}">&laquo; Previous</a>
+                            <a href="/user/track/list/?page={{next_page}}"">Next&raquo;</a>
+                          </div></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+        <!-- content-wrapper ends -->
+        {% include 'common/footer.html' %}
+      </div>
+      <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+  </div>
+  <!-- container-scroller -->
+ {% include 'common/js.html' %}
+</body>
+
+</html>
