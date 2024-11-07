@@ -17,12 +17,10 @@ urlpatterns = [
 
     path('album/',Albums.as_view()),
     path('album/list/',Albums.as_view()),
-    path('album/<uuid>',Albums.as_view()),
     path('album/get-album/<uuid>',Albums.get_album_info),
 
     path('track/',Tracks.as_view()),
     path('track/list/',Tracks.as_view()),
-    path('track/<uuid>',Tracks.as_view()),
     path('track/get-track/<uuid>',Tracks.get_track_info),
 
     path('playlist/',Playlists.as_view()),
