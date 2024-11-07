@@ -24,7 +24,6 @@ urlpatterns = [
 
     path('playlist/',Playlists.as_view()),
     path('playlist/list/',Playlists.as_view()),
-    # path('playlist/<uuid>',Playlists.as_view()),
     path('playlist/get-playlist/<uuid>',Playlists.get_playlist_info),
     
 ]
