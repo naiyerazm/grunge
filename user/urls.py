@@ -12,7 +12,6 @@ urlpatterns = [
 
     path('artist/',Artists.as_view()),
     path('artist/list/',Artists.as_view()),
-    path('artist/<uuid>',Artists.as_view()),
     path('artist/get-artist/<uuid>',Artists.get_artist_info),
 
     path('album/',Albums.as_view()),
